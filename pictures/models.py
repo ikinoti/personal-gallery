@@ -45,3 +45,15 @@ class Category(models.Model):
 
     def delete_category(self):
         self.delete()
+
+class Image(models.Model):
+    image = models.ImageField(upload_to='photos/')
+    name = models.CharField(max_length=60)
+    description = models.TextField()
+    author = models.CharField(max_length=40, default='kinoti')
+    date = models.DateTimeField(auto_now_add=True)
+    category = models.ForeignKey(Category)
+    location = models.ForeignKey(Location)
+
+    def __str__(self):
+        return self.name
