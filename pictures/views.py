@@ -7,7 +7,7 @@ def index(request):
     images = Image.objects.all()
     locations = Location.get_locations()
     print(locations)
-    return render(request, 'pictures/index.html', {'locations': locations})
+    return render(request, 'pictures/index.html', {'images':images, 'locations': locations})
 
 def image_location(request, location):
     images = Image.filter_by_location(location)
